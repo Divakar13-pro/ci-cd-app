@@ -32,4 +32,4 @@ jobs:
     # Step 5: Build project (if React or has build step)
     - name: Build Project
       run: npm run build || echo "No build step, skipping"
-      divakar: this is the way where u r using dovops sucessfully 
+      #divakar: this is the way where u r using dovops sucessfully 
