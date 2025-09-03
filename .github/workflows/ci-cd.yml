@@ -1,0 +1,34 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]   # Run on push to main branch
+  pull_request:
+    branches: [ "main" ]   # Run on PR to main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Runner OS
+
+    steps:
+    # Step 1: Checkout repo code
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: Setup Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: npm install
+
+    # Step 4: Run tests
+    - name: Run Tests
+      run: npm test
+
+    # Step 5: Build project (if React or has build step)
+    - name: Build Project
+      run: npm run build || echo "No build step, skipping"
